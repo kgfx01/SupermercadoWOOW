@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow mb-4" *ngIf="estaLogueado()">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/dashboard">SUPER WOOW</a>
+    
+    <div class="navbar-nav ms-auto align-items-center">
+      <a class="nav-link text-white fw-bold" routerLink="/dashboard">DASHBOARD</a>
+      <a class="nav-link text-white fw-bold" routerLink="/productos">PRODUCTOS</a>
+      <a class="nav-link text-white fw-bold" routerLink="/proveedores">PROVEEDORES</a>
+      <a class="nav-link text-white fw-bold" routerLink="/ordenes">ORDENES</a>
+
+      <a class="nav-link text-warning fw-bold ms-3" routerLink="/usuarios" *ngIf="esAdmin()">
+        GESTIÓN DE USUARIOS
+      </a>
+
+      <button class="btn btn-outline-light btn-sm ms-4 fw-bold" (click)="cerrarSesion()">
+        SALIR
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

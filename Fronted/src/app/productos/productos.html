@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <div class="card p-3 mb-4 shadow-sm border-warning">
+    <div class="row g-2 mb-2">
+      <div class="col-md-2"><input [(ngModel)]="nuevoProducto.codigo" class="form-control" placeholder="Código"></div>
+      <div class="col-md-4"><input [(ngModel)]="nuevoProducto.nombre" class="form-control" placeholder="Nombre"></div>
+      <div class="col-md-2"><input [(ngModel)]="nuevoProducto.precio" type="number" class="form-control" placeholder="Precio"></div>
+      <div class="col-md-2"><input [(ngModel)]="nuevoProducto.stock_actual" type="number" class="form-control" placeholder="Stock"></div>
+      <div class="col-md-2">
+        <button (click)="registrar()" [class]="editando ? 'btn btn-info w-100 fw-bold' : 'btn btn-warning w-100 fw-bold'">
+          {{ editando ? 'ACTUALIZAR' : 'GUARDAR' }}
+        </button>
+      </div>
+    </div>
+    <div class="row g-2">
+      <div class="col-md-10"><input [(ngModel)]="nuevoProducto.descripcion" class="form-control" placeholder="Descripción"></div>
+      <div class="col-md-2" *ngIf="editando">
+        <button (click)="resetForm()" class="btn btn-secondary w-100">CANCELAR</button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Stock Actual</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of listaProductos()">
+        <td>{{ p.codigo }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.descripcion }}</td>
+        <td>L. {{ p.precio }}</td>
+        <td>{{ p.stock_actual }}</td>
+        <td>
+          <button (click)="prepararEdicion(p)" class="btn btn-sm btn-primary me-1">Editar</button>
+          <button (click)="eliminar(p.id)" class="btn btn-sm btn-danger">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

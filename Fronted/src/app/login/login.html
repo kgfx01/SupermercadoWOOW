@@ -1,0 +1,36 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow-lg border-0" style="width: 400px;">
+    <div class="card-header bg-primary text-white text-center py-3">
+      <h3 class="mb-0 fw-bold">SUPER WOOW</h3>
+    </div>
+
+    <div class="card-body p-4 bg-light">
+      <form (submit)="iniciarSesion(); $event.preventDefault()">
+        <div class="mb-3">
+          <label class="form-label fw-bold text-dark">Correo Electronico</label>
+          <div class="input-group">
+            <input type="email" class="form-control border-start-0" 
+                   [(ngModel)]="email" name="email" required
+                   placeholder="usuario@super.com">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-bold text-dark">Contraseña</label>
+          <div class="input-group">
+            <input type="password" class="form-control border-start-0" 
+                   [(ngModel)]="password" name="password" required
+                   placeholder="********">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 fw-bold py-2 shadow-sm">
+          INGRESAR AL SISTEMA
+        </button>
+      </form>
+    </div>
+
+    <div class="card-footer text-center py-3 bg-white border-0">
+    </div>
+  </div>
+</div>

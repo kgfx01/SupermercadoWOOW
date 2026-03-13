@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <h2 class="fw-bold mb-4">Gestión de Órdenes de Compra</h2>
+
+  <div class="card p-4 shadow-sm border-0 mb-4 bg-light">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Proveedor</label>
+        <select class="form-select" [(ngModel)]="nuevaOrden.id_proveedor">
+          <option value="0">Seleccione</option>
+          <option *ngFor="let p of proveedores" [value]="p.id">{{ p.nombre }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Producto</label>
+        <select class="form-select" [(ngModel)]="nuevaOrden.id_producto">
+          <option value="0">Seleccione...</option>
+          <option *ngFor="let prod of productos" [value]="prod.id">{{ prod.nombre }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Cantidad</label>
+        <input type="number" class="form-control" [(ngModel)]="nuevaOrden.cantidad">
+      </div>
+
+      <div class="col-md-2 d-flex align-items-end">
+        <button class="btn btn-primary w-100 fw-bold" (click)="guardarOrden()">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow border-0">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Proveedor</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let o of ordenes">
+          <td>#{{ o.id }}</td>
+          <td class="fw-bold">{{ o.proveedor }}</td>
+          <td>{{ o.fecha | date:'short' }}</td>
+          <td>
+            <span class="badge" [ngClass]="{'bg-warning text-dark': o.estado === 'pendientes', 'bg-success': o.estado === 'completada'}">
+              {{ o.estado | uppercase }}
+            </span>
+          </td>
+          <td class="text-center">
+            <button *ngIf="o.estado === 'pendientes'" class="btn btn-sm btn-success" (click)="cambiarEstado(o.id, 'completada')">
+              Completar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
