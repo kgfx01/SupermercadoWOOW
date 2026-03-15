@@ -1,43 +1,51 @@
 <div class="container mt-4">
-  <div class="card p-3 mb-4 shadow-sm border-primary">
+  <h2 class="fw-bold mb-4">Gestion de Proveedores</h2>
+
+  <div class="card p-3 mb-4 shadow-sm border-0 bg-light">
     <div class="row g-2">
-      <div class="col-md-4"><input [(ngModel)]="nuevoProveedor.nombre" class="form-control" placeholder="Nombre Empresa"></div>
-      <div class="col-md-4"><input [(ngModel)]="nuevoProveedor.contacto" class="form-control" placeholder="Nombre Contacto"></div>
-      <div class="col-md-2"><input [(ngModel)]="nuevoProveedor.telefono" class="form-control" placeholder="Teléfono"></div>
+      <div class="col-md-3">
+        <input [(ngModel)]="nuevoProveedor.nombre" class="form-control" placeholder="Nombre Empresa">
+      </div>
+      <div class="col-md-3">
+        <input [(ngModel)]="nuevoProveedor.contacto" class="form-control" placeholder="Nombre Contacto">
+      </div>
       <div class="col-md-2">
-        <button (click)="registrar()" [class]="editando ? 'btn btn-info w-100 fw-bold' : 'btn btn-primary w-100 fw-bold'">
+        <input [(ngModel)]="nuevoProveedor.telefono" class="form-control" placeholder="Teléfono">
+      </div>
+      <div class="col-md-2">
+        <input [(ngModel)]="nuevoProveedor.email" type="email" class="form-control" placeholder="Email">
+      </div>
+      <div class="col-md-2">
+        <button (click)="registrar()" [class]="editando ? 'btn btn-info w-100 fw-bold' : 'btn btn-warning w-100 fw-bold'">
           {{ editando ? 'ACTUALIZAR' : 'GUARDAR' }}
         </button>
-      </div>
-      <div class="col-md-5"><input [(ngModel)]="nuevoProveedor.email" class="form-control" placeholder="Email"></div>
-      <div class="col-md-5"><input [(ngModel)]="nuevoProveedor.direccion" class="form-control" placeholder="Dirección"></div>
-      <div class="col-md-2" *ngIf="editando">
-        <button (click)="resetForm()" class="btn btn-secondary w-100">CANCELAR</button>
       </div>
     </div>
   </div>
 
-  <table class="table table-bordered table-hover text-center">
-    <thead class="table-dark">
-      <tr>
-        <th>Empresa</th>
-        <th>Contacto</th>
-        <th>Telefono</th>
-        <th>Email</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of listaProveedores()">
-        <td>{{ p.nombre }}</td>
-        <td>{{ p.contacto }}</td>
-        <td>{{ p.telefono }}</td>
-        <td>{{ p.email }}</td>
-        <td>
-          <button (click)="prepararEdicion(p)" class="btn btn-sm btn-outline-primary me-1">Editar</button>
-          <button (click)="eliminar(p.id)" class="btn btn-sm btn-outline-danger">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="card shadow border-0">
+    <table class="table table-bordered table-hover text-center align-middle mb-0">
+      <thead>
+        <tr>
+          <th style="background-color: #FFC107; color: black; border: 1px solid black;">EMPRESA</th>
+          <th style="background-color: #FFC107; color: black; border: 1px solid black;">CONTACTO</th>
+          <th style="background-color: #FFC107; color: black; border: 1px solid black;">TELEFONO</th>
+          <th style="background-color: #FFC107; color: black; border: 1px solid black;">EMAIL</th>
+          <th style="background-color: #FFC107; color: black; border: 1px solid black;">ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of listaProveedores()">
+          <td class="fw-bold">{{ p.nombre }}</td>
+          <td>{{ p.contacto }}</td>
+          <td>{{ p.telefono }}</td>
+          <td>{{ p.email }}</td>
+          <td>
+            <button (click)="prepararEdicion(p)" class="btn btn-sm btn-primary me-1">Editar</button>
+            <button (click)="eliminar(p.id)" class="btn btn-sm btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

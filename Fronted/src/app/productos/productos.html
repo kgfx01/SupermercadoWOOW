@@ -1,33 +1,43 @@
 <div class="container mt-4">
-  <div class="card p-3 mb-4 shadow-sm border-warning">
+  <div class="card p-3 mb-4 shadow-sm">
     <div class="row g-2 mb-2">
-      <div class="col-md-2"><input [(ngModel)]="nuevoProducto.codigo" class="form-control" placeholder="Código"></div>
-      <div class="col-md-4"><input [(ngModel)]="nuevoProducto.nombre" class="form-control" placeholder="Nombre"></div>
-      <div class="col-md-2"><input [(ngModel)]="nuevoProducto.precio" type="number" class="form-control" placeholder="Precio"></div>
-      <div class="col-md-2"><input [(ngModel)]="nuevoProducto.stock_actual" type="number" class="form-control" placeholder="Stock"></div>
       <div class="col-md-2">
+        <input [(ngModel)]="nuevoProducto.codigo" class="form-control" placeholder="Código">
+      </div>
+      
+      <div class="col-md-2">
+        <input [(ngModel)]="nuevoProducto.nombre" class="form-control" placeholder="Nombre">
+      </div>
+
+      <div class="col-md-3">
+        <input [(ngModel)]="nuevoProducto.descripcion" class="form-control" placeholder="Descripción">
+      </div>
+
+      <div class="col-md-1">
+        <input [(ngModel)]="nuevoProducto.precio" type="number" class="form-control" placeholder="Precio">
+      </div>
+
+      <div class="col-md-1">
+        <input [(ngModel)]="nuevoProducto.stock_actual" type="number" class="form-control" placeholder="Stock">
+      </div>
+
+      <div class="col-md-3">
         <button (click)="registrar()" [class]="editando ? 'btn btn-info w-100 fw-bold' : 'btn btn-warning w-100 fw-bold'">
           {{ editando ? 'ACTUALIZAR' : 'GUARDAR' }}
         </button>
       </div>
     </div>
-    <div class="row g-2">
-      <div class="col-md-10"><input [(ngModel)]="nuevoProducto.descripcion" class="form-control" placeholder="Descripción"></div>
-      <div class="col-md-2" *ngIf="editando">
-        <button (click)="resetForm()" class="btn btn-secondary w-100">CANCELAR</button>
-      </div>
-    </div>
   </div>
 
-  <table class="table table-bordered table-striped text-center">
-    <thead class="table-dark">
+  <table class="table table-bordered text-center">
+    <thead>
       <tr>
-        <th>Codigo</th>
-        <th>Nombre</th>
-        <th>Descripcion</th>
-        <th>Precio</th>
-        <th>Stock Actual</th>
-        <th>Acciones</th>
+        <th style="background-color: #FFC107; color: black; border: 1px solid black;">CODIGO</th>
+        <th style="background-color: #FFC107; color: black; border: 1px solid black;">NOMBRE</th>
+        <th style="background-color: #FFC107; color: black; border: 1px solid black;">DESCRIPCION</th>
+        <th style="background-color: #FFC107; color: black; border: 1px solid black;">PRECIO</th>
+        <th style="background-color: #FFC107; color: black; border: 1px solid black;">STOCK ACTUAL</th>
+        <th style="background-color: #FFC107; color: black; border: 1px solid black;">ACCIONES</th>
       </tr>
     </thead>
     <tbody>

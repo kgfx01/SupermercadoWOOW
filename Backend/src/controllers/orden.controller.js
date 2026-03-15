@@ -1,5 +1,5 @@
 const pool = require('../db/db');
-//obtenemos las ordenes
+//aquiobtenemos las ordenes
 exports.getOrders = async (req, res) => {
     try {
         const result = await pool.query(`

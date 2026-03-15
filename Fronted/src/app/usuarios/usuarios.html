@@ -32,23 +32,27 @@
 
     <div class="col-md-8">
       <div class="card shadow border-0">
-        <div class="card-header bg-dark text-white">
+        <div class="card-header bg-primary text-white">
           <h5 class="mb-0">Usuarios en el Sistema</h5>
         </div>
         <div class="table-responsive">
-          <table class="table table-hover align-middle mb-0">
-            <thead class="table-light">
+          <table class="table table-bordered table-hover align-middle mb-0 text-center">
+            <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Rol</th>
+                <th style="background-color: #FFC107; color: black; border: 1px solid black;">NOMBRE</th>
+                <th style="background-color: #FFC107; color: black; border: 1px solid black;">CORREO</th>
+                <th style="background-color: #FFC107; color: black; border: 1px solid black;">ROL</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let u of listaUsuarios">
                 <td>{{u.nombre}}</td>
                 <td>{{u.email}}</td>
-                <td><span class="badge" [ngClass]="u.rol === 'admin' ? 'bg-danger' : 'bg-info'">{{u.rol}}</span></td>
+                <td>
+                  <span class="badge" [ngClass]="u.rol === 'admin' ? 'bg-danger' : 'bg-info'">
+                    {{u.rol | uppercase}}
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>
